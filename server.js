@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect("mongodb+srv://carlover031200:carlover031200@cluster0.0whojid.mongodb.net/NetflixClone", {
+  .connect("ng", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
