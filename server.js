@@ -2,14 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./routes/UserRoutes");
 const mongoose = require("mongoose");
-
+const dotenv = require('dotenv');
 const app = express();
 
 app.use(cors());
+dotenv.config();
 app.use(express.json());
 
 mongoose
-  .connect("mongodb+srv://carlover031200:carlover031200@cluster0.0whojid.mongodb.net/NetflixClone", {
+  .connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -22,6 +23,6 @@ mongoose
 
 app.use("/api/user", userRoutes);
 
-app.listen(5000, () => {
-  console.log("server started on port 5000");
+app.listen(process.env.PORT, () => {
+  console.log(`server started on ${process.env.PORT}`);
 });
